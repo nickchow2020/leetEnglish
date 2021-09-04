@@ -1,0 +1,97 @@
+{% extends 'base.html' %}
+{% block title %}LeetEnglish{% endblock %}
+{% block content %}
+{% if session["username"] %}
+<h2 class="text-success" id="title_top_three">Keep Up the Motivation</h2>
+<div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <div class="motivateUser">
+        <img src={{top_three[0].avatar}} alt="avatar">
+        <div class="userInfo">
+          <div>
+            <h3>Name:</h3>
+            <p>{{top_three[0].first_name}} {{top_three[0].last_name}}</p>
+          </div>
+          <div>
+            <h3>LeetEng Points:</h3>
+            <p class="text-danger">{{top_three[0].points}} 🔥🔥🔥</p>
+          </div>
+          <div>
+            <p class="quotes">{{top_three[0].quote}}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="carousel-item">
+      <div class="motivateUser">
+        <img src={{top_three[1].avatar}} alt="avatar">
+        <div class="userInfo">
+          <div>
+            <h3>Name:</h3>
+            <p>{{top_three[1].first_name}} {{top_three[1].last_name}}</p>
+          </div>
+          <div>
+            <h3>LeetEng Points:</h3>
+            <p class="text-danger">{{top_three[1].points}} 🔥🔥</p>
+          </div>
+          <div>
+            <p class="quotes">{{top_three[1].quote}}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="carousel-item">
+      <div class="motivateUser">
+        <img src={{top_three[2].avatar}} alt="avatar">
+        <div class="userInfo">
+          <div>
+            <h3>Name:</h3>
+            <p>{{top_three[2].first_name}} {{top_three[2].last_name}}</p>
+          </div>
+          <div>
+            <h3>LeetEng Points:</h3>
+            <p class="text-danger">{{top_three[2].points}} 🔥 </p>
+          </div>
+          <div>
+            <p class="quotes">{{top_three[2].quote}}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+  </a>
+</div>
+<h2 class="text-success">Most read Articles:</h2>
+<div class="articles">
+  {% for article in top_nine %}
+    <div class="card" style="width: 18rem;">
+      <img class="card-img-top" src={{article.cover_url}} alt="Card image cap">
+      <div class="card-body">
+        <h5 class="card-title">{{article.title}}</h5>
+        <p class="card-text">{{article.description}}</p>
+        <a href="/articles/topNine/{{article.id}}" class="btn btn-outline-warning">Go Read</a>
+      </div>
+    </div>
+  {% endfor %}
+</div>
+{% else %}
+<div class="jumbotron">
+  <h1 class="display-4 text-center">LeetEnglish</h1>
+  <p class="lead text-center">Let's learns English Together, let us grows every day</p>
+  <hr class="my-4">
+  <p class="text-center">This is place where we can learn English language and communicate each other</p>
+  <p class="lead text-center">
+    <a class="btn btn-outline-success btn-lg mx-2" href="/register" role="button">SignUp</a>
+    <a class="btn btn-outline-success btn-lg mx-2" href="/login" role="button">Login</a>
+  </p>
+</div>
+{% endif %}
+{% endblock %}

@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/static/bootstrap-image-checkbox.css">
+    <!-- Local css style -->
+    <link rel="stylesheet" type="text/css" href="/static/dd.css"/>
+    <script src="https://kit.fontawesome.com/3346e8b33e.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" type="text/css" href="/static/layout.css">
+    <script src="https://cdn.tiny.cloud/1/vniz5i6lw21s5noyqgvs5a0527zj0rdv0vphfqprmq8d6qhx/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+    <script>
+      tinymce.init({
+        selector: '#floatingTextarea2',  // change this value according to your HTML
+        plugin: 'a_tinymce_plugin',
+        a_plugin_option: true,
+        a_configuration_option: 400
+      });
+    </script>
+    <title>{% block title%}{% endblock %}</title>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <div class="container">
+        <a class="navbar-brand" href="#">LeetEnglish</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+          <div class="navbar-nav ml-auto">
+            {% if session["username"]%}
+            <a class="btn btn-outline-success mx-3" href="/user/info/{{user.username}}">about me, {{user.first_name}}</a>
+            <a class="btn btn-outline-success" href="/signout">SignOut</a>
+            {% else %}
+            <a class="btn btn-outline-success mx-3" href="/register">SignUp</a>
+            <a class="btn btn-outline-success" href="/login">Login</a>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+    </nav>
+    <div class="contents container">
+      {% if session["username"] %}
+      <nav class="navbar navbar-light bg-light" id="section-navbar">
+        <!-- Navbar content -->
+        <div id="section-btn">
+          <a href="/articles" class="btn btn-outline-warning">Reading</a>
+          <a href="/vocabulary" class="btn btn-outline-warning">Vocabulary</a>
+          <a href="/practice" class="btn btn-outline-warning">Practice</a>
+          <a href="/tweets" class="btn btn-outline-warning">Tweets</a>
+          <a href="/about" class="btn btn-outline-warning">About LeetEnglish</a>
+        </div>
+      </nav>
+      {% endif %}
+      {% for category,msg in get_flashed_messages(with_categories=True)%}
+      <div class="alert alert-{{category}}" role="alert">
+        {{msg}}
+      </div>
+      {% endfor %}
+      {% block content %}{% endblock %}
+    </div>
+    
+    <footer class="navbar-dark bg-dark">
+      <div class="container">
+          <p class="copyright">Copyright © 2021 Shumin(Nick) Zhou</p>
+      </div>
+    </footer>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="/static/jquery-1.9.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script src="/static/jquery.dd.js"></script>
+    <script src="/static/app.js"></script>
+  </body>
+</html>

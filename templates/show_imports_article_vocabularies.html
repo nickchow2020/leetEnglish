@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% block title%}practice{% endblock %}
+{% block content %}
+<div class="d-flex justify-content-between align-items-center my-3">
+  <div class="d-flex flex-row align-items-center back"><i class="fa fa-long-arrow-left mr-1 mb-1"></i>
+      <a href="/practice/imports/vocabulary/list"><h6>Back to previous</h6></a>
+  </div>
+</div>
+
+<form method="POST">
+  <div class="d-flex justify-content-between align-items-center">
+    <div>
+      <h1 class="text-success">{{target_article.title}}:</h1>
+      <p class="lead">click on the vocabulary you want to practice <i class="far fa-hand-pointer"></i>:</p>
+    </div>
+    <button class="btn btn-outline-success btn-lg">Start Practice</button>
+  </div>
+  <div class="row row-cols-1 row-cols-md-3 g-4 d-flex flex-wrap">
+    {% for vol in vocabularies %}
+    <div class="col-3 my-2">
+      <div class="card h-150 custom-control custom-checkbox image-checkbox">
+        <input type="checkbox" class="custom-control-input" id="{{vol.id}}" value="{{vol.id}}" name="select_vocabulary">
+        <label class="custom-control-label" for="{{vol.id}}">
+          <img src="{{vol.image_url if vol.image_url else '/static/not_found.jpeg'}}" class="card-img-top img-fluid" alt="...">
+          <div class="card-body">
+            <strong class="card-title">{{vol.spell}}</strong>
+            <p>{{vol.part_of_speech}}</p>
+            <p>{{vol.definition}}</p>
+          </div>
+        </label>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</form>
+{% endblock %}

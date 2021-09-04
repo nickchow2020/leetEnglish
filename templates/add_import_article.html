@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+{% block title %}show import article{% endblock %}
+{% block content %}
+<div class="d-flex justify-content-between align-items-center my-3">
+  <div class="d-flex flex-row align-items-center back"><i class="fa fa-long-arrow-left mr-1 mb-1"></i>
+      <a href="/articles/import/{{category.category}}"><h6>Back to previous</h6></a>
+  </div>
+</div>
+<div class="col-md-12">
+  <form class="p-3" method="POST">
+    <h1 class="text-success">Add Your own Article</h1>
+      <div class="row mt-2">
+          <div class="col-md-6">
+              <label for="author">Author:</label>
+              <input type="text" class="form-control" id="author" name="author">
+          </div>
+          <div class="col-md-6">
+              <label for="title">Title:</label>
+              <input type="text" class="form-control" id="title" name="title">
+          </div>
+      </div>
+      <div class="row mt-3">
+          <div class="col-md-6">
+              <label for="category">Category:</label>
+              <input type="text" class="form-control" value="{{category.id}}" id="category" name="category">
+          </div>
+          <div class="col-md-6">
+              <label for="numberRead">Number of Reads:</label>
+              <input type="text" class="form-control" value="1" id="numberRead" name="numberRead">
+          </div>
+      </div>
+      <div class="row mt-3">
+        <div class="col-md-12">
+          <div class="form-floating">
+            <label for="description">Description</label>
+            <textarea class="form-control" placeholder="add article description here...." name="description" id="description" style="height: 100px"></textarea>
+          </div>
+        </div>
+      </div>
+      <div class="row mt-3">
+          <div class="col-md-12">
+              <label for="cover_url">Cover URL(optional):</label>
+              <input type="text" class="form-control" id="cover_url" name="cover_url">
+          </div>
+      </div>
+      <div class="row mt-3">
+        <div class="col-md-12">
+          <div class="form-floating">
+            <label for="floatingTextarea2">Article Context:</label>
+            <textarea class="form-control" placeholder="add article context here" name="article_context" id="floatingTextarea2" style="height: 500px"></textarea>
+          </div>
+        </div>
+      </div>
+      <div class="mt-5 text-right">
+          <button class="btn btn-outline-success" type="submit">Add Article</button>
+      </div>
+  </form>
+</div>
+{% endblock %}

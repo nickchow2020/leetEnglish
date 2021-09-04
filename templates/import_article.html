@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% block title %}import own article{% endblock %}
+{% block content %}
+<div class="d-flex justify-content-between align-items-center my-3">
+  <div class="d-flex flex-row align-items-center back"><i class="fa fa-long-arrow-left mr-1 mb-1"></i>
+      <a href="/articles"><h6>Back to previous</h6></a>
+  </div>
+</div>
+<form class="mt-4" method="POST">
+  <div class="form-group">
+    <label for="category_list">Create a category of you own articles</label>
+    <input type="text" class="form-control" id="category_list" aria-describedby="emailHelp" placeholder="Enter your own category" name="category" required>
+  </div>
+  <div class="form-group">
+    <label for="category_des">category description:</label>
+    <input type="text" class="form-control" id="category_des" aria-describedby="emailHelp" placeholder="Enter category description" name="description" required>
+  </div>
+  <button type="submit" class="btn btn-outline-success">Create</button>
+  <a href="/articles" class="btn btn-outline-secondary">Cancel</a>
+</form>
+
+<div class="d-flex flex-wrap justify-content-start my-4">
+  {% if user.import_category %}
+    {% for category in user.import_category %}
+    <div class="card border-success mb-3 mr-3" style="max-width: 18rem;">
+      <div class="card-header">{{category.category}}</div>
+      <a href="/articles/import/{{category.category}}" class="card-body text-success">
+        <h5 class="card-title">Articles About {{category.category}}</h5>
+        <p class="card-text">{{category.description}}</p>
+      </a>
+      <a href="/articles/import/edit/category/{{category.id}}" class="btn btn-outline-success">Edit</a>
+      <form action="/articles/import/delete/category/{{category.id}}" class="category_delete_form" method="POST">
+        <button type="submit" class="btn btn-outline-secondary delete_btn">Delete</button>
+      </form>
+    </div>
+    {% endfor %}
+  {% endif %}
+</div>
+
+{% endblock %}

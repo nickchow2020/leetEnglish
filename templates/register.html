@@ -1,0 +1,119 @@
+{% extends "base.html" %}
+{% block title %}sign up{% endblock %}
+{% block content%}
+<form class="signupForm" method="POST">
+  <h1 class="title-signup">USER SIGN UP</h1>
+  <div class="form-group row">
+    <label for="username" class="col-sm-2 col-form-label">Username</label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" id="username" placeholder="Username" name="username" required>
+    </div>
+  </div>
+  <div class="form-group row">
+    <label for="inputEmail3" class="col-sm-2 col-form-label">Email</label>
+    <div class="col-sm-10">
+      <input type="email" class="form-control" id="inputEmail3" placeholder="Email" name="email" required>
+    </div>
+  </div>
+  <div class="form-group row">
+    <label for="inputPassword3" class="col-sm-2 col-form-label">Password</label>
+    <div class="col-sm-10">
+      <input type="password" class="form-control" id="inputPassword3" placeholder="Password" name="password" required>
+    </div>
+  </div>
+  <div class="form-group row">
+    <label for="first_name" class="col-sm-2 col-form-label">First Name</label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" id="first_name" placeholder="First Name" name="first_name" required>
+    </div>
+  </div>
+  <div class="form-group row">
+    <label for="last_name" class="col-sm-2 col-form-label">Last Name</label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" id="last_name" placeholder="Last Name" name="last_name" required>
+    </div>
+  </div>
+  <div class="form-group row">
+    <label for="quote" class="col-sm-2 col-form-label">Quotes</label>
+    <div class="col-sm-10">
+      <select class="custom-select" id="quote" name="quote" required> 
+        <option selected>Choose motivational quotes(can change after login)...</option>
+        <option value="1">if you want something you never had,you have todo something you've never done</option>
+        <option value="2">difficult roads lead to beautiful destinations</option>
+        <option value="3">the best view comes after the hardest climb</option>
+        <option value="4">a journey of a thousand miles must begin with a sample step</option>
+        <option value="5">people will throw stones at you. Don't throw them back.Collect them all and build an empire</option>
+        <option value="6">The Pessimist Sees Difficulty In Every Opportunity. The Optimist Sees Opportunity In Every Difficulty</option>
+        <option value="7 ">You Learn More From Failure Than From Success. Don’t Let It Stop You. Failure Builds Character</option>
+        <option value="8">It’s Not Whether You Get Knocked Down, It’s Whether You Get Up</option>
+        <option value="9">If You Are Working On Something That You Really Care About, You Don’t Have To Be Pushed. The Vision Pulls You</option>
+        <option value="10">People Who Are Crazy Enough To Think They Can Change The World, Are The Ones Who Do</option>
+        <option value="11">Failure Will Never Overtake Me If My Determination To Succeed Is Strong Enough</option>
+        <option value="12">Entrepreneurs Are Great At Dealing With Uncertainty And Also Very Good At Minimizing Risk</option>
+        <option value="13">We May Encounter Many Defeats But We Must Not Be Defeated</option>
+        <option value="14">Knowing Is Not Enough; We Must Apply. Wishing Is Not Enough; We Must Do</option>
+        <option value="15">Imagine Your Life Is Perfect In Every Respect; What Would It Look Like?</option>
+        <option value="16">We Generate Fears While We Sit. We Overcome Them By Action</option>
+        <option value="17">Whether You Think You Can Or Think You Can’t, You’re Right</option>
+        <option value="18">Security Is Mostly A Superstition. Life Is Either A Daring Adventure Or Nothing</option>
+        <option value="19">The Man Who Has Confidence In Himself Gains The Confidence Of Others</option>
+        <option value="20">The Only Limit To Our Realization Of Tomorrow Will Be Our Doubts Of Today</option>
+        <option value="21">Creativity Is Intelligence Having Fun</option>
+      </select>
+    </div>
+  </div>
+  <fieldset class="form-group">
+    <div class="row">
+      <legend class="col-form-label col-sm-2 pt-0">SEX</legend>
+      <div class="col-sm-10">
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="gender" id="gridRadios1" value="male" checked>
+          <label class="form-check-label" for="gridRadios1">
+            Male
+          </label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="gender" id="gridRadios2" value="female">
+          <label class="form-check-label" for="gridRadios2">
+            Female
+          </label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="gender" id="gridRadios3" value="other">
+          <label class="form-check-label" for="gridRadios3">
+            Other
+          </label>
+        </div>
+      </div>
+    </div>
+  </fieldset>
+  <div class="form-group row">
+    <label for="avatar" class="col-sm-2 col-form-label">Avatar</label>
+    <div class="col-sm-10">
+      <select id="avatar" name="avatar" style="width:450px;">
+        <option data-description="Choose your avatar">Avatar...</option>
+        <option value="/static/avatar/m1.png" data-image="/static/avatar/m1.png" data-description="default man avatar1">male1</option>
+        <option value="/static/avatar/m2.png" data-image="/static/avatar/m2.png" data-description="default man avatar2">male2</option>
+        <option value="/static/avatar/m3.jpeg" data-image="/static/avatar/m3.jpeg" data-description="default man avatar3">male3</option>
+        <option value="/static/avatar/m4.png" data-image="/static/avatar/m4.png" data-description="default man avatar4">male4</option>
+        <option value="/static/avatar/m5.png" data-image="/static/avatar/m5.png" data-description="default man avatar5">male5</option>
+        <option value="/static/avatar/m6.png" data-image="/static/avatar/m6.png" data-description="default man avatar6">male6</option>
+        <option value="/static/avatar/m6.png" data-image="/static/avatar/m6.png" data-description="default  man avatar7">male7</option>
+        <option value="/static/avatar/f1.png" data-image="/static/avatar/f1.png" data-description="default Female avatar1">female1</option>
+        <option value="/static/avatar/f2.png" data-image="/static/avatar/f2.png" data-description="default Female avatar2">female2</option>
+        <option value="/static/avatar/f3.png" data-image="/static/avatar/f3.png" data-description="default Female avatar3">female3</option>
+        <option value="/static/avatar/f4.png" data-image="/static/avatar/f4.png" data-description="default Female avatar4">female4</option>
+        <option value="/static/avatar/f5.png" data-image="/static/avatar/f5.png" data-description="default Female avatar5">female5</option>
+        <option value="/static/avatar/f6.png" data-image="/static/avatar/f6.png" data-description="default Female avatar6">female6</option>
+        <option value="/static/avatar/f7.png" data-image="/static/avatar/f7.png" data-description="default  Female avatar7">female7</option>
+    </select>
+    </div>
+  </div>
+  <div class="form-group row">
+    <div class="col-sm-10">
+      <button type="submit" class="btn btn-outline-success btn-lg mr-3">Sign Up</button>
+      <a href="/" class="btn btn-outline-success btn-lg">Cancel</a>
+    </div>
+  </div>
+</form>
+{% endblock%}

@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+{% block title %}article{% endblock %}
+{% block content%}
+  <h1 class="article_title">{{article.title}}</h1>
+  <span class="article_author">By {{article.author}}</span>
+  <div class="article_contain">
+      <img src={{article.cover_url}} alt="avatar" class="image">
+      <!-- {% for p in paragraph %}
+        <p>{{p}}</p>
+      {% endfor %} -->
+      <div>
+        {{paragraph|safe}}
+      </div>
+  </div>
+  <div class="get_definition">
+    <ul>
+      {% if search_key %}
+      <h6>{{search_key}}:</h6>
+      {% for definition in definitions %}
+      <li>
+        <strong class="def_title">definition:</strong>{{definition.definition}}<br>
+        <strong class="def_speech">part_of_speech:</strong>{{definition.part_of_speech}}
+      </li>
+      {% endfor %}
+      <button class="btn btn-sm btn-outline-success my-2" id="addImageUrl"><i class="fas fa-plus">Image</i></button>
+      <li id="addImageForm">
+        <form action="/article/import/add/img/{{category}}/{{article.id}}/{{search_key}}" method="POST">
+          <div class="definition_images_list d-flex flex-wrap">
+            {% for image in definition_images %}
+              {% if image.original %}
+              <div class="col-3 my-2">
+                <div class="card h-150 custom-control custom-checkbox image-checkbox">
+                  <input type="radio" class="custom-control-input" id="{{image.position}}" value="{{image.original}}" name="select_vocabulary">
+                  <label class="custom-control-label" for="{{image.position}}">
+                    <img src="{{image.original}}" class="card-img-top img-fluid" alt="...">
+                  </label>
+                </div>
+              </div>
+              {% endif %}
+            {% endfor %}
+          </div>
+          <button type="submit" class="btn btn-outline-success">Add Image</button>
+        </form>
+      </li>
+      {% endif %}
+    </ul>
+  </div>
+  <div class="d-flex">
+    <form class="form-inline definition_form col" action="/article/get_definition/{{category}}/{{article.id}}" method="POST">
+      <div class="form-group">
+        <label for="inputPassword6">Search for Definition</label>
+        <input type="text" id="inputPassword6" class="form-control mx-sm-3" aria-describedby="passwordHelpInline" name="new_search">
+      </div>
+      <button type="submit" class="btn btn-outline-success">Get Definition</button>
+    </form>
+
+    <form class="form-inline" method="POST">
+      <button type="submit" class="btn btn-outline-success">Finish Reading</button>
+      <a href="/articles/import/{{category}}" class="btn btn-outline-secondary ml-2">Go Back Later</a>
+    </form>
+  </div>
+{% endblock %}

@@ -1,0 +1,338 @@
+.jumbotron{
+    margin: auto;
+    background: white;
+    padding-top: 15rem;
+    text-align: center;
+}
+
+#section-navbar{
+    box-shadow: 1px 0 4px 1px black;
+}
+
+#section-btn a{
+    margin-right: 1rem;
+}
+
+.carousel-item{     
+    padding: 1rem;
+}
+
+.text-success{
+    margin-top: 1rem;
+}
+
+/* motivate section style */
+
+.motivateUser{
+    display: flex;
+}
+
+.motivateUser img{
+    width: 300px;
+    height: 300px; 
+}
+
+.quotes{
+    font-size: 1.2rem;
+    width: 70%;
+    margin: auto;
+    font-weight: bolder;
+    text-decoration: underline orange 3px;
+}
+
+.carousel-inner{
+    box-shadow: -3px -3px 4px 0 green;
+    border-radius: 25px 25px 0 25px;
+    margin-top: 1rem;
+}
+
+.table-striped{
+    box-shadow: 3px 3px 4px 0 green;
+    border-radius: 0 0 25px 25px;
+    margin-top: 1rem;
+}
+
+.userInfo{
+    padding-left: 5rem;
+}
+
+/* Sticky Footer */
+
+body{
+    display: flex;
+    height: 100vh;
+    flex-direction: column;
+}
+
+.contents {
+    flex: 1 0 auto;
+}
+
+footer{
+    flex-shrink: 0;
+    margin-top: 1rem;
+}
+
+footer p {
+    margin: .8rem 0;
+    padding: 0;
+    color: white;
+    text-align: center;
+}
+
+/* Article Section */
+
+.articles{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin: 1.5rem 0;
+}
+
+.articles .card{
+    margin-bottom: 1rem;
+    box-shadow: -3px -3px 4px 0 green;
+    border-radius: 25px 0 25px 0;
+    margin-bottom: 2rem;
+}
+
+/* signupForm style */
+
+.signupForm,
+.loginForm{
+    margin-top: 5rem;
+}
+
+.title-signup,
+.title-login{
+    box-shadow: 3px 3px 4px 0 green;
+    margin-bottom: 2rem;
+}
+
+#avatar_child li img,
+#avatar_title img{
+    height: 55px;
+}
+
+.dd .ddTitle{
+    background: white;
+}
+
+.dd .ddChild li.selected{
+    background: white;
+}
+
+/* article page style */
+
+.image{
+    float: left;
+    padding: 1rem;
+    width: 400px;
+}
+
+p{
+    text-align: justify;
+}
+
+.article_contain{
+    height: 50vh;
+    overflow: scroll;
+    margin-bottom: 2rem;
+}
+
+.article_title{
+    margin-top: 1rem ;
+}
+
+.article_author{
+    margin-left: 3rem;
+}
+
+.definition_form{
+    display: flex;
+    margin: 1rem 0;
+    padding: 0;
+}
+
+.get_definition{
+    overflow: scroll;
+}
+
+/* vocabulary section style */
+.card:hover{
+    text-decoration: none;
+}
+
+.card-body:hover{
+    background: rgb(235, 235, 235);
+    transition: .5s ease-in-out;
+}
+
+.card-title{
+    color: green;
+}
+
+/* vocabulary list wrapper */
+
+.vocabulary_list_wrapper{
+    height: 50vh;
+    overflow: scroll;
+}
+
+.card a{
+    text-decoration: none;
+    color: black;
+}
+
+.middle_line{
+    margin:2rem 0;
+}
+
+/* vocabulary list style */
+.definition_list{
+    height: 10rem;
+    overflow: scroll;
+}
+
+/* vocabulary list definition */
+.fas{
+    font-size: 1.5rem;
+}
+
+/* add image from definition */
+#addImageForm{
+    display: none;
+}
+
+/* category delete form */
+.delete_btn{
+    width: 100%;
+}
+
+/* style images  */
+.card-img-top{
+    height: 50%;
+    width: 100%;
+}
+
+/* vocabulary image layout */
+
+.custom-control-input{
+    width: 10rem;
+    height: 10rem;
+}
+
+.show{
+    display: block;
+}
+
+.hide{
+    visibility: none
+}
+
+/* finish image layout */
+.card-img-bottom{
+    width: 20rem;
+}
+
+/* tweet head */
+.tweet_head{
+    height: 15rem;
+}
+
+/* tweets message style */
+.timeline-image{
+    width: 30px;
+    border-radius: 50%;
+}
+
+/* tweets_message */
+.tweets_message{
+    overflow: scroll;
+}
+
+/* button style */
+.comment_btn,
+.delete_btn,
+.likes_btn{
+    border: 0;
+    padding: 0;
+    background: none;
+    display: inline-block;  
+    cursor: pointer;
+    outline: none;
+    transition: .1s ease-in;
+}
+
+.comment_btn:active,
+.delete_btn:active,
+.likes_btn:active{
+    color: tomato;
+}
+
+.comment_btn:hover,
+.delete_btn:hover,
+.likes_btn:hover{
+    color: tomato;
+    outline: none;
+}
+
+.comment_btn:focus{
+    outline: none;
+}
+
+/* tweets_group */
+.tweets_group{
+    width:100%;
+}
+
+/* comments forms */
+.form_comments,
+.form_delete,
+.form_likes{
+    margin-left: 1.5rem;
+}
+
+/* tweet_form style */
+.tweet_comment{
+    border: solid tomato 1px;
+    border-radius:5px;
+    outline:none;
+    height: 2.5rem;
+    padding: .2rem .3rem;
+}
+
+.tweet_form{
+    display: none !important;
+}
+
+.tweet_comment:focus{
+    background: rgba(255, 99, 71,0.1);
+}
+
+.add_post_form{
+    transition: .3s ease-in-out;
+}
+
+/* set border to border less */
+li.borderless {
+    border-top: 0 none;
+    padding: 0.2rem;
+}
+
+.comment_list{
+    background:tomato;
+    width: 100%;
+    display: block;
+}
+
+/* user display */
+.user_display{
+    padding: 1rem;
+}
+
+/* about image style */
+.aboutImageSection{
+    width: 100%;
+    background: #000;
+}

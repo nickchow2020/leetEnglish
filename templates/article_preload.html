@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block title %}preload article{% endblock %}
+{% block content %}
+<div class="d-flex justify-content-between align-items-center my-3">
+  <div class="d-flex flex-row align-items-center back"><i class="fa fa-long-arrow-left mr-1 mb-1"></i>
+      <a href="/articles"><h6>Back to previous</h6></a>
+  </div>
+</div>
+<div class="d-flex flex-wrap justify-content-start">
+  {% for category in categories %}
+  <div class="card border-success mb-3 mr-3" style="max-width: 18rem;">
+    <div class="card-header">{{category.category}}</div>
+    <a href="/articles/preload/{{category.category}}" class="card-body text-secondary">
+      <h5 class="card-title">{{category.category}} Articles</h5>
+      <p class="card-text">{{category.description}}</p>
+    </a>
+  </div>
+  {% endfor %}
+</div>
+{% endblock %}

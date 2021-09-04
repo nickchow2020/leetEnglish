@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block title%}show preload article{% endblock %}
+{% block content %}
+<div class="d-flex justify-content-between align-items-center my-3">
+  <div class="d-flex flex-row align-items-center back"><i class="fa fa-long-arrow-left mr-1 mb-1"></i>
+      <a href="/articles/preload"><h6>Back to previous</h6></a>
+  </div>
+</div>
+  <h1 class="text-success">{{category.category}}</h1>
+  <div class="d-flex flex-wrap justify-content-start">
+    {% for article in category.articles %}
+      <div class="card mr-5 mb-4" style="width: 18rem;">
+        <img class="card-img-top" src={{article.cover_url}} alt="Card image cap">
+        <div class="card-body d-flex flex-column">
+          <h5 class="card-title">{{article.title}}</h5>
+          <p class="card-text">{{article.description}}</p>
+          <a href="/articles/{{article.id}}" class="btn btn-outline-warning mt-auto">Go Read</a>
+          {% if user.id == article.user_id%}
+          <form action="/delete/articles/preload/{{category.category}}/{{article.id}}" method="POST">
+            <button class="btn btn-outline-danger" type="submit">Delete</button>
+          </form>
+          {% endif %}
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+{% endblock %}

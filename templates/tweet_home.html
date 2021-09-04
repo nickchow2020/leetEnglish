@@ -1,0 +1,215 @@
+{% extends 'base.html' %}
+{% block title%}practice{% endblock %}
+{% block content %}
+<div class="container tweet_head border-bottom my-4">
+  <div class="d-flex flex-row align-items-center back"><i class="fa fa-long-arrow-left mr-1 mb-1"></i>
+    {% if id %}
+      {% if argument %}
+      <a href="/tweets/users?search_user={{argument}}"><h6>Back to Search User List</h6></a>
+      {% else %}
+      <a href="/tweets/users"><h6>Back to User List</h6></a>
+      {% endif %}
+    {% else %}
+    <a href="/"><h6>Back to Home</h6></a>
+    {% endif %}
+  </div>
+  <div class="row">
+    {% if target_user.id != user.id %}
+    <div class="col-md-6 border-right">
+        <div class="d-flex flex-column align-items-center text-center">
+            <img class="rounded-circle" src="{{target_user.avatar}}" width="90">
+            <span class="font-weight-bold">@{{target_user.first_name}} {{target_user.last_name}}</span>
+            <span>{{target_user.quote}}</span>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="p-3 py-5" >
+            <div class="row mt-2">
+                <div class="col-md-4">
+                    <label for="username">Messages</label>
+                    <a href="/tweets/messages/{{target_user.id}}"><h5>{{target_user.messages|length}}</h5></a>
+                </div>
+                <div class="col-md-4">
+                    <label for="email">Following</label>
+                    <a href="/tweets/following/{{target_user.id}}"><h5>{{target_user.following|length}}</h5></a>
+                </div>
+                <div class="col-md-4">
+                  <label for="email">Follower</label>
+                  <a href="/tweets/follower/{{target_user.id}}"><h5>{{target_user.followers|length}}</h5></a>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% else %}
+    <div class="col-md-6 border-right">
+        <div class="d-flex flex-column align-items-center text-center">
+            <img class="rounded-circle" src="{{user.avatar}}" width="90">
+            <span class="font-weight-bold">@{{user.first_name}} {{user.last_name}}</span>
+            <span>{{user.quote}}</span>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="p-3 py-5" >
+            <div class="row mt-2">
+                <div class="col-md-4">
+                    <label for="username">Messages</label>
+                    <a href="/tweets/messages"><h5>{{user.messages|length}}</h5></a>
+                </div>
+                <div class="col-md-4">
+                    <label for="email">Following</label>
+                    <a href="/tweets/following"><h5>{{user.following|length}}</h5></a>
+                </div>
+                <div class="col-md-4">
+                  <label for="email">Follower</label>
+                  <a href="/tweets/follower"><h5>{{user.followers|length}}</h5></a>
+                </div>
+            </div>
+        </div>
+        <a href="/tweets/{{user.username}}/add" class="btn btn-outline-primary"><i class="fas fa-plus-square"></i>Add New Message</a>
+        <a href="/tweets/users" class="btn btn-outline-primary"><i class="fas fa-plus-square"></i>Add More Friend</a>
+    </div>
+    {% endif %}
+    </div>
+</div>
+<div class="col-12 tweets_message">
+  <ul class="list-group list-group-flush">
+    {% for msg in messages %}
+      <li class="list-group-item d-flex flex-column justify-content-center">
+        <div class="d-flex">
+            <a href="/user/info/{{msg.message_owner.username}}">
+                <img src="{{ msg.message_owner.avatar }}" alt="" class="timeline-image mr-3">
+            </a>
+            <div class="message-area">
+              <a href="/user/info/{{msg.message_owner.username}}">@{{ msg.message_owner.username }}</a>
+              <span class="text-muted">{{ msg.timestamp.strftime('%d %B %Y') }}</span>
+              <p>{{ msg.text}}</p>
+              {% if msg.comments %}
+                <ul class="list-group list-group-flush comment_list">
+                  {% for comment in msg.comments %}
+                  <li class="list-group-item borderless d-flex comment-list">
+                    <a href="/user/info/{{comment.comment_user.username}}">
+                      <img src="{{ comment.comment_user.avatar }}" alt="" class="timeline-image mr-3">
+                    </a>
+                    <a href="/user/info/{{comment.comment_user.username}}">@{{ comment.comment_user.username }}</a>
+                    <p>
+                      &nbsp{{comment.text}}
+                    </p>
+                    <div class="d-flex">
+                      {% if comment.comment_owner.id == user.id %}
+                        {% if id %}
+                        <form action="/tweet/delete/comment/{{msg.id}}/{{comment.id}}/{{target_user.id}}" class="form_delete" method="POST">
+                          <button class="delete_btn"><i class="far fa-trash-alt"></i></button>
+                        </form>
+                        {% else %}
+                        <form action="/tweet/delete/comment/{{msg.id}}/{{comment.id}}" class="form_delete" method="POST">
+                          <button class="delete_btn"><i class="far fa-trash-alt"></i></button>
+                        </form>
+                        {% endif %}
+                      {% endif %}
+
+                      {% if id %}
+                      <form class="form_likes" action="/tweet/like/comment/{{comment.id}}/{{target_user.id}}" method="POST">
+                        <button class="likes_btn"><i class="far fa-thumbs-up">{{comment.likes|length}}</i></button>
+                      </form>
+                      {% else %}
+                      <form class="form_likes" action="/tweet/like/comment/{{comment.id}}" method="POST">
+                        <button class="likes_btn"><i class="far fa-thumbs-up">{{comment.likes|length}}</i></button>
+                      </form>
+                      {% endif %}
+
+                    </div>
+                  </li>
+                  {% endfor %}
+                </ul>
+              {% endif %}
+            </div>
+        </div>
+        <div class="d-flex align-items-center add_post_form">
+          {% if id %}
+          <form action="/tweets/{{user.username}}/{{msg.id}}/comment/{{id}}" class="tweet_form d-flex ml-5" method="POST">
+            <textarea name="comment" cols="50" placeholder="say something" class="tweet_comment"></textarea>
+            <button class="btn btn-outline-warning ml-3">post</button>
+          </form>
+          {% else %}
+          <form action="/tweets/{{user.username}}/{{msg.id}}/comment" class="tweet_form d-flex ml-5" method="POST">
+            <textarea name="comment" cols="50" placeholder="say something" class="tweet_comment"></textarea>
+            <button class="btn btn-outline-warning ml-3">post</button>
+          </form>
+          {% endif %}
+          <div class="d-flex tweets_group justify-content-end">
+            <button class="comment_btn"><i class="far fa-comment-alt fa-lg"></i></button>
+            {% if target_user.id == user.id %}
+            <form action="/tweet/delete/{{msg.id}}" class="form_delete" method="POST">
+              <button class="delete_btn"><i class="far fa-trash-alt fa-lg"></i></button>
+            </form>
+            {% endif %}
+
+            {% if id %}
+            <form class="form_likes" action="/tweet/like/{{msg.id}}/{{target_user.id}}" method="POST">
+              <button class="likes_btn"><i class="far fa-thumbs-up fa-lg">{{msg.likes|length}}</i></button>
+            </form>
+            {% else %}
+            <form class="form_likes" action="/tweet/like/{{msg.id}}" method="POST">
+              <button class="likes_btn"><i class="far fa-thumbs-up fa-lg">{{msg.likes|length}}</i></button>
+            </form>
+            {% endif %}
+          </div>
+        </div>
+      </li>
+    {% endfor %}
+
+    {% for msg in following_users_message %}
+    <li class="list-group-item d-flex flex-column justify-content-center">
+      <div class="d-flex">
+          <a href="/user/info/{{msg.message_owner.username}}">
+              <img src="{{ msg.message_owner.avatar }}" alt="" class="timeline-image mr-3">
+          </a>
+          <div class="message-area">
+            <a href="/user/info/{{msg.message_owner.username}}">@{{ msg.message_owner.username }}</a>
+            <span class="text-muted">{{ msg.timestamp.strftime('%d %B %Y') }}</span>
+            <p>{{ msg.text}}</p>
+            {% if msg.comments %}
+              <ul class="list-group list-group-flush comment_list">
+                {% for comment in msg.comments %}
+                <li class="list-group-item borderless d-flex comment-list">
+                  <a href="/user/info/{{comment.comment_user.username}}">
+                    <img src="{{ comment.comment_user.avatar }}" alt="" class="timeline-image mr-3">
+                  </a>
+                  <a href="/user/info/{{comment.comment_user.username}}">@{{ comment.comment_user.username }}</a>
+                  <p>
+                    &nbsp{{comment.text}}
+                  </p>
+                  <div class="d-flex">
+                    {% if comment.comment_owner.id == user.id %}
+                    <form action="/tweet/delete/comment/{{msg.id}}/{{comment.id}}" class="form_delete" method="POST">
+                      <button class="delete_btn"><i class="far fa-trash-alt"></i></button>
+                    </form>
+                    {% endif %}
+                    <form class="form_likes" action="/tweet/like/comment/{{comment.id}}" method="POST">
+                      <button class="likes_btn"><i class="far fa-thumbs-up">{{comment.likes|length}}</i></button>
+                    </form>
+                  </div>
+                </li>
+                {% endfor %}
+              </ul>
+            {% endif %}
+          </div>
+      </div>
+      <div class="d-flex align-items-center add_post_form">
+        <form action="/tweets/{{user.username}}/{{msg.id}}/comment" class="tweet_form d-flex ml-5" method="POST">
+          <textarea name="comment" cols="50" placeholder="say something" class="tweet_comment"></textarea>
+          <button class="btn btn-outline-warning ml-3">post</button>
+        </form>
+        <div class="d-flex tweets_group justify-content-end">
+          <button class="comment_btn"><i class="far fa-comment-alt fa-lg"></i></button>
+          <form class="form_likes" action="/tweet/like/{{msg.id}}" method="POST">
+            <button class="likes_btn"><i class="far fa-thumbs-up fa-lg"></i>{{msg.likes|length}}</button>
+          </form>
+        </div>
+      </div>
+    </li>
+    {% endfor %}
+  </ul>
+</div>
+
+{% endblock %}

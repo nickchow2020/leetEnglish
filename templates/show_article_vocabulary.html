@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% block title %}show article vocabulary{% endblock %}
+{% block content %}
+<div class="d-flex justify-content-between align-items-center my-3">
+  <div class="d-flex flex-row align-items-center back"><i class="fa fa-long-arrow-left mr-1 mb-1"></i>
+      <a href="/vocabulary/article/list/preload"><h6>Back to Previous</h6></a>
+  </div>
+</div>
+<h1 class="text-success">{{article.title}}</h1>
+<h2 class="text-success">Vocabularies:</h2>
+<div class="row row-cols-1 row-cols-md-3 g-4 d-flex flex-wrap">
+  {% if vocabularies %}
+    {% for vocabulary in vocabularies %}
+    <div class="col-3 my-2">
+      <div class="card h-100">
+        <img src="{{vocabulary.image_url if vocabulary.image_url else '/static/not_found.jpeg'}}" class="card-img-top" alt="">
+        <div class="card-body">
+          <h5 class="card-title">{{vocabulary.spell}}</h5>
+          <p class="card-text">{{vocabulary.part_of_speech}}</p>
+          <p class="card-text">{{vocabulary.definition}}</p>
+        </div>
+        <a href="/vocabulary/article/{{article.id}}/list/{{vocabulary.spell}}" class="btn btn-outline-success">Edit Vocabulary</a>
+      </div>
+    </div>
+    {% endfor %}
+  {% else %}
+  <div class="alert alert-success my-5 mx-auto" role="alert">
+    <h4 class="alert-heading">Well Done!</h4>
+    <p>You have successfully read this article, you are familiar with all the words of this article，Well Done！</p>
+    <hr>
+    <p class="mb-0">Keep working hard. You're learning well.</p>
+  </div>
+  {% endif %}
+</div>
+{% endblock %}

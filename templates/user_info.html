@@ -1,0 +1,98 @@
+{% extends 'base.html' %}
+{% block title%}user details{% endblock %}
+{% block content %}
+<div class="container rounded bg-white mt-5">
+    <div class="row">
+        <div class="col-md-4 border-right">
+            <div class="d-flex flex-column align-items-center text-center p-3 py-5">
+                <img class="rounded-circle mt-5" src="{{user.avatar}}" width="90">
+                <span class="font-weight-bold">{{user.first_name}} {{user.last_name}}</span>
+                <span class="text-black-50">{{user.email}}</span>
+                <span>points:{{user.points}}</span>
+                <hr>
+                <span>{{user.quote}}</span>
+            </div>
+        </div>
+        <div class="col-md-8">
+            <form class="p-3 py-5" method="POST">
+                {% if user.id == current_user.id %}
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <div class="d-flex flex-row align-items-center back"><i class="fa fa-long-arrow-left mr-1 mb-1"></i>
+                            <a href="/"><h6>Back to home</h6></a>
+                        </div>
+                        <h6 class="text-right">Edit Profile</h6>
+                    </div>
+                    <div class="row mt-2">
+                        <div class="col-md-6">
+                            <label for="username">Username:</label>
+                            <input type="text" class="form-control" value="{{user.username}}" disabled id="username">
+                        </div>
+                        <div class="col-md-6">
+                            <label for="email">Email:</label>
+                            <input type="text" class="form-control" value="{{user.email}}" id="email" name="email">
+                        </div>
+                    </div>
+                    <div class="row mt-3">
+                        <div class="col-md-6">
+                            <label for="firstname">First Name:</label>
+                            <input type="text" class="form-control" value="{{user.first_name}}" id="firstname" name="first_name">
+                        </div>
+                        <div class="col-md-6">
+                            <label for="lastname">Last Name:</label>
+                            <input type="text" class="form-control" value="{{user.last_name}}" id="lastname" name="last_name">
+                        </div>
+                    </div>
+                    <div class="row mt-3">
+                        <div class="col-md-12">
+                            <label for="quote">Quote:</label>
+                            <input type="text" class="form-control" value="{{user.quote}}" name="quote">
+                        </div>
+                    </div>
+                    <div class="row mt-3">
+                        <div class="col-md-12">
+                            <label for="quote">Avatar URL:</label>
+                            <input type="text" class="form-control" value="{{user.avatar}}" name="avatar">
+                        </div>
+                    </div>
+                    <div class="mt-5 text-right">
+                        <button class="btn btn-outline-success" type="submit">Save Profile</button>
+                    </div>
+                {% else %}
+                    <div class="row mt-2">
+                        <div class="col-md-6">
+                            <label for="username">Username:</label>
+                            <input type="text" class="form-control" value="{{user.username}}" disabled id="username">
+                        </div>
+                        <div class="col-md-6">
+                            <label for="email">Email:</label>
+                            <input type="text" class="form-control" value="{{user.email}}" id="email" name="email" disabled>
+                        </div>
+                    </div>
+                    <div class="row mt-3">
+                        <div class="col-md-6">
+                            <label for="firstname">First Name:</label>
+                            <input type="text" class="form-control" value="{{user.first_name}}" id="firstname" name="first_name" disabled>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="lastname">Last Name:</label>
+                            <input type="text" class="form-control" value="{{user.last_name}}" id="lastname" name="last_name" disabled>
+                        </div>
+                    </div>
+                    <div class="row mt-3">
+                        <div class="col-md-12">
+                            <label for="quote">Quote:</label>
+                            <input type="text" class="form-control" value="{{user.quote}}" name="quote" disabled>
+                        </div>
+                    </div>
+                    <div class="row mt-3">
+                        <div class="col-md-12">
+                            <label for="quote">Avatar URL:</label>
+                            <input type="text" class="form-control" value="{{user.avatar}}" name="avatar" disabled>
+                        </div>
+                    </div>
+                {% endif %}
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}
