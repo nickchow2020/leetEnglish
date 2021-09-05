@@ -70,9 +70,9 @@ leetEnglish have 18 tables under leetenglish database:
 * Likes
 * CommentLikes
   
-![alt database schema1](https://drive.google.com/file/d/1MUD1hq0T3nA9OEDE-d5LjZEpHYxncEn-/view?usp=sharing)
-![alt database schema2](https://drive.google.com/file/d/1Ax0z11BghaRgAQnkeOXS7P9DKTq2HDEX/view?usp=sharing)
-![alt database schema3](https://drive.google.com/file/d/1lmfZg52kWxpLLJFvUVP3PSXkVfUqmQ5_/view?usp=sharing)
+![alt database schema1](/static/schame/schame1-3.png)
+![alt database schema2](/static/schame/schame2-3.png)
+![alt database schema3](/static/schame/schame3-3.png)
 
 
 
