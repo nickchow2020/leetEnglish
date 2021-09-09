@@ -3,7 +3,7 @@ from articles_preload import articles_business,articles_entertainment,articles_h
 from app import app
 
 # Create all tables
-# db.drop_all()
+db.drop_all()
 db.create_all()
 
 default_quote1 = Quotes(quote="if you want something you never had,you have todo something you've never done")
