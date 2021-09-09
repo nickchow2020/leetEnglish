@@ -2,6 +2,7 @@ from models import User, Quotes,db,Articles,Categories,Message,Follows,Likes
 from articles_preload import articles_business,articles_entertainment,articles_health,articles_technology
 from app import app
 
+
 # Create all tables
 db.drop_all()
 db.create_all()

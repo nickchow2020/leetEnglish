@@ -23,20 +23,6 @@ serpapi = "your_api_key"
 
 ---
 # How to run the app locally
-download the file from this repository, on your computer type the following command on your terminal:
-```python
-source venv/bin/activate
-```
-under the virtual environment terminal type the following commands:
-
-```python
-
-pip install -r requirements.txt
-
-export FLASK_ENV=development
-
-flask run
-```
 
 ## database
 create to databases in your computer call "leetenglish" and "leetenglish-test"
@@ -47,6 +33,32 @@ leetenglish for general storage and leetenglish-test for testing
 CREATE DATABASE leetenglish
 
 CREATE DATABASE leetenglish-test
+```
+
+## run seed.py 
+for demonstration purpose to add data into the app, run seed.py file using ipython, runs the following commands 
+
+In ipython
+```python
+%run seed.py
+
+```
+
+## start the app
+download the file from this repository, on your computer type the following command on your terminal:
+```python
+
+pip install -r requirements.txt
+
+source venv/bin/activate
+```
+under the virtual environment terminal type the following commands:
+
+```python
+
+export FLASK_ENV=development
+
+flask run
 ```
 
 # Database Schema
