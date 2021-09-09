@@ -39,6 +39,10 @@ CREATE DATABASE leetenglish-test
 for demonstration purpose to add data into the app, run seed.py file using ipython under the python virtual environment, runs the following commands
 
 ```python
+pip install -r requirements.txt
+```
+
+```python
 source venv/bin/activate
 
 ```
@@ -56,9 +60,6 @@ ipython
 ## start the app
 download the file from this repository, on your computer type the following command on your terminal:
 ```python
-
-pip install -r requirements.txt
-
 source venv/bin/activate
 ```
 under the virtual environment terminal type the following commands:
