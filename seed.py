@@ -135,3 +135,4 @@ message12 = Message(text="Security ahead situation. Cold southern nature story m
 message13 = Message(text="Whatever difficult continue reach leader end guy. Four religious never end want manage president. Speech from operation talk end reach",timestamp="2021-07-24 11:04:53.522807",user_id=3)
 db.session.add_all([message11,message12,message13])
 db.session.commit()
+

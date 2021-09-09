@@ -36,10 +36,11 @@ CREATE DATABASE leetenglish-test
 ```
 
 ## run seed.py 
-for demonstration purpose to add data into the app, run seed.py file using ipython, runs the following commands 
+for demonstration purpose to add data into the app, run seed.py file using ipython under the python virtual environment, runs the following commands
 
-In ipython
 ```python
+source venv/bin/activate
+
 %run seed.py
 
 ```
