@@ -32,6 +32,7 @@ app.config["SECRET_KEY"] = os.environ.get("SECRET_KEY","MY_SECRET_KEY_10_20")
 
 # connect to database leetenglish
 connect_db(app)
+
 toolbar = DebugToolbarExtension(app)
 
 # home page route
