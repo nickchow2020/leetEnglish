@@ -41,6 +41,11 @@ for demonstration purpose to add data into the app, run seed.py file using ipyth
 ```python
 source venv/bin/activate
 
+&#8595;
+ipython
+
+&#8595;
+
 %run seed.py
 
 ```
