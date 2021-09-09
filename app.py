@@ -16,7 +16,7 @@ app = Flask(__name__)
 app.debug = True
 
 # define database url
-app.config["SQLALCHEMY_DATABASE_URI"] = os.environ.get('DATABASE_URL','postgresql:///leetenglish')
+app.config["SQLALCHEMY_DATABASE_URI"] = os.environ.get('DATABASE_URL','postgresql://leetenglish') 
 
 # allow intercept redirects
 app.config["DEBUG_TB_INTERCEPT_REDIRECTS"] = False
