@@ -41,7 +41,7 @@ for demonstration purpose to add data into the app, run seed.py file using ipyth
 ```python
 pip install -r requirements.txt
 ```
-
+&#8595;
 ```python
 source venv/bin/activate
 
