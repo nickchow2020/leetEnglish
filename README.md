@@ -25,7 +25,7 @@ serpapi = "your_api_key"
 # How to run the app locally
 
 ## database
-create to databases in your computer call "leetenglish" and "leetenglish-test"
+create databases in your computer call "leetenglish" and "leetenglish-test"
 
 leetenglish for general storage and leetenglish-test for testing
 
