@@ -96,5 +96,6 @@ leetEnglish have 18 tables under leetenglish database:
 ![alt database schema2](/static/schame/schame2-3.png)
 ![alt database schema3](/static/schame/schame3-3.png)
 
+# Deploy LeetEnglish on Heroku
 
 
