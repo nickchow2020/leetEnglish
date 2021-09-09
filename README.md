@@ -41,14 +41,17 @@ for demonstration purpose to add data into the app, run seed.py file using ipyth
 ```python
 source venv/bin/activate
 
+```
 &#8595;
+```python
 ipython
 
-&#8595;
-
-%run seed.py
-
 ```
+&#8595;
+```python
+%run seed.py
+```
+
 
 ## start the app
 download the file from this repository, on your computer type the following command on your terminal:
