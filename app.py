@@ -1,6 +1,7 @@
 from logging import debug
 from operator import methodcaller
 import os
+import re
 from sys import exec_prefix
 from flask import Flask,render_template,redirect,session,flash,request
 from datetime import datetime
@@ -15,8 +16,14 @@ from forms import Login_form,MessageForm
 app = Flask(__name__)
 app.debug = True
 
+uri = os.getenv("DATABASE_URL")  # or other relevant config var
+if uri.startswith("postgres://"):
+    uri = uri.replace("postgres://", "postgresql://", 1)
+
+# os.environ.get('DATABASE_URL','postgresql://leetenglish') 
+
 # define database url
-app.config["SQLALCHEMY_DATABASE_URI"] = os.environ.get('DATABASE_URL','postgresql://leetenglish') 
+app.config["SQLALCHEMY_DATABASE_URI"] = uri
 
 # allow intercept redirects
 app.config["DEBUG_TB_INTERCEPT_REDIRECTS"] = False
