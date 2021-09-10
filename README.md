@@ -97,5 +97,8 @@ leetEnglish have 18 tables under leetenglish database:
 ![alt database schema3](/static/schame/schame3-3.png)
 
 # Deploy LeetEnglish on Heroku
+[leetEnglish!](https://leetenglish.herokuapp.com) app has deployed on Heroku, you can either register an account or use my account to export the app 
 
+username: shuminzhou,
+password: shuminzhou
 
