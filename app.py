@@ -16,14 +16,13 @@ from forms import Login_form,MessageForm
 app = Flask(__name__)
 app.debug = True
 
-uri = os.getenv("DATABASE_URL")  # or other relevant config var
-if uri.startswith("postgres://"):
-    uri = uri.replace("postgres://", "postgresql://", 1)
+# uri = os.getenv("DATABASE_URL")  # or other relevant config var
+# if uri.startswith("postgres://"):
+#     uri = uri.replace("postgres://", "postgresql://", 1)
 
-# os.environ.get('DATABASE_URL','postgresql://leetenglish') 
 
 # define database url
-app.config["SQLALCHEMY_DATABASE_URI"] = uri
+app.config["SQLALCHEMY_DATABASE_URI"] = os.environ.get('DATABASE_URL','postgresql://leetenglish') 
 
 # allow intercept redirects
 app.config["DEBUG_TB_INTERCEPT_REDIRECTS"] = False
